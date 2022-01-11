@@ -9,7 +9,7 @@ const mongoose = require('mongoose');
 
 /* Connexion à la base de donnée MongoDB */
 
-mongoose.connect('mongodb+srv://raph:Marseille95@cluster0.5c2jz.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
+mongoose.connect('mongodb+srv://'+process.env.DB_USER+':'+process.env.DB_PASSWORD+'@'+process.env.DB_HOST+'/'+process.env.DB_NAME+'?retryWrites=true&w=majority',
   { useNewUrlParser: true,
     useUnifiedTopology: true })
   .then(() => console.log('Connexion à MongoDB réussie !'))
@@ -36,8 +36,8 @@ const path = require('path');
 app.use('/images', express.static(path.join(__dirname, 'images')));
 
 
-const saucesRoutes = require('./routes/sauces');
-app.use('/api/sauces', saucesRoutes);
+const saucesRoutes = require('./routes/sauce');
+
 
 const userRoutes = require('./routes/user');
 app.use('/api/sauces', saucesRoutes);
