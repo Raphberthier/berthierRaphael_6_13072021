@@ -25,12 +25,11 @@ mongoose.connect('mongodb+srv://'+process.env.DB_USER+':'+process.env.DB_PASSWOR
   });
 
   
-/* Package body-parser - Extraire l'objet JSON de la demande */
-  app.use(bodyParser.json());
 
-/* Enregistrement des routes dans l'application */
+
+
 app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+
 
 const path = require('path');
 app.use('/images', express.static(path.join(__dirname, 'images')));
